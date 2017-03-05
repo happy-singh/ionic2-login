@@ -6,6 +6,19 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
+import { AngularFireModule } from 'angularfire2';
+import { Facebook } from 'ionic-native';
+
+
+ // Initialize Firebase
+  export const config = {
+    apiKey: "AIzaSyBgRiRsZYypkd7PugU4pCeOxFMut94kTac",
+    authDomain: "tryproject-8857c.firebaseapp.com",
+    databaseURL: "https://tryproject-8857c.firebaseio.com",
+    storageBucket: "tryproject-8857c.appspot.com",
+    messagingSenderId: "16833955297"
+  };
+
 @NgModule({
   declarations: [
     MyApp,
@@ -15,7 +28,8 @@ import { TabsPage } from '../pages/tabs/tabs';
     TabsPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(config)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -25,6 +39,6 @@ import { TabsPage } from '../pages/tabs/tabs';
     HomePage,
     TabsPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, Facebook]
 })
 export class AppModule {}
